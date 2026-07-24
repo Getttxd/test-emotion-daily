@@ -1,8 +1,8 @@
 export const tokens = {
   color: {
     brand: {
-      primary: '#8C57FF',
-      primaryDarken: '#7E4EE6',
+      primary: '#FFB400',
+      primaryDarken: '#E6A200',
       secondary: '#8A8D93',
       secondaryDarken: '#7C7F84',
       accent: '#FFB400',
