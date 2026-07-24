@@ -236,7 +236,7 @@ onMounted(async () => {
             </VListItem>
           </VList>
           <VCardActions>
-            <RouterLink :to="{ name: 'emotion-log-page' }">
+            <RouterLink to="/emotion-log-page">
               <VBtn variant="text" size="small">{{ t('dashboard.viewAllEmotions') }}</VBtn>
             </RouterLink>
           </VCardActions>
