@@ -17,7 +17,7 @@ Template สำหรับนักศึกษาที่อยากเร�
 ## โครงสร้างโปรเจกต์
 
 ```
-starter-template/
+daily-emotion/
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml       # CI/CD pipeline รวม backend + frontend
@@ -119,7 +119,7 @@ push to main
 
 1. ไปที่ [dash.cloudflare.com/profile/api-tokens](https://dash.cloudflare.com/profile/api-tokens)
 2. กด **Create Token** → เลือก **Create Custom Token**
-3. ตั้งชื่อ เช่น `starter-deploy`
+3. ตั้งชื่อ เช่น `daily-emotion-deploy`
 4. เพิ่ม Permissions ดังนี้:
 
    | Scope | Resource | Permission |
@@ -146,7 +146,7 @@ push to main
 ### Secret 3 — `D1_DATABASE_ID`
 
 ```bash
-npx wrangler d1 create starter-db
+npx wrangler d1 create daily-emotion-db
 ```
 
 Output:
@@ -191,7 +191,7 @@ URL ของ backend Workers ที่ deploy แล้ว รู้ได้�
 1. Push code ขึ้น `main` และรอให้ `deploy-backend` job ผ่าน
 2. ดู log ของ workflow จะเห็น:
    ```
-   ✅ Backend deployed to https://starter-backend.yourname.workers.dev
+   ✅ Backend deployed to https://daily-emotion-backend.yourname.workers.dev
    ```
 3. คัดลอก URL นั้น → เพิ่มเป็น Secret `VITE_BACKEND_URL`
 4. Push อีกครั้งเพื่อให้ frontend build ด้วย URL ที่ถูกต้อง

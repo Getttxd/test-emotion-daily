@@ -8,6 +8,14 @@ export default [
     icon: { icon: 'ri-home-line' },
   },
   {
+    heading: 'Tracking',
+  },
+  {
+    title: 'Emotion Logs',
+    to: { name: 'emotion-log-page' },
+    icon: { icon: 'ri-emotion-line' },
+  },
+  {
     heading: 'Admin',
   },
   {

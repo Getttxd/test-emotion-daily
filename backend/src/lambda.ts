@@ -5,10 +5,12 @@ import { handle } from 'hono/aws-lambda'
 import { createApp } from './app'
 import { createContainer } from './di/container'
 import { MemoryCacheRepository } from './infrastructure/memory/memory-cache-repository'
+import { MemoryEmotionLogRepository } from './infrastructure/memory/memory-emotion-log-repository'
 import { MemoryUserRepository } from './infrastructure/memory/memory-user-repository'
 
 const container = createContainer({
   userRepository: new MemoryUserRepository(),
+  emotionLogRepository: new MemoryEmotionLogRepository(),
   cacheRepository: new MemoryCacheRepository(),
 })
 

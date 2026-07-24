@@ -30,15 +30,18 @@ export function createApp(containerFactory: (env: Partial<Bindings>) => Containe
     openAPIRouteHandler(app, {
       documentation: {
         info: {
-          title: 'Starter API',
+          title: 'Daily-Emotion API',
           version: '1.0.0',
-          description: 'Hono backend running on Cloudflare Workers (D1 + KV) and AWS Lambda',
+          description: 'Daily-Emotion — Emotion tracking backend on Cloudflare Workers (D1 + KV) and AWS Lambda',
         },
-        tags: [{ name: 'Users', description: 'User management' }],
+        tags: [
+          { name: 'Users', description: 'User management' },
+          { name: 'Emotion Logs', description: 'Daily emotion logging' },
+        ],
       },
     })
   )
-  app.get('/docs', Scalar({ url: '/openapi.json', pageTitle: 'Starter API Docs' }))
+  app.get('/docs', Scalar({ url: '/openapi.json', pageTitle: 'Daily-Emotion API Docs' }))
 
   app.notFound((c) => c.json({ error: { code: 'NOT_FOUND', message: 'Route not found' } }, 404))
 
