@@ -1,16 +1,16 @@
 export default [
   {
-    title: 'Home',
+    title: 'navigation.dashboard',
     to: { name: 'root' },
     icon: { icon: 'ri-home-smile-line' },
   },
   {
-    title: 'Emotion Logs',
+    title: 'navigation.emotionLogs',
     to: { name: 'emotion-log-page' },
     icon: { icon: 'ri-emotion-line' },
   },
   {
-    title: 'Users',
+    title: 'navigation.users',
     to: { name: 'user-page' },
     icon: { icon: 'ri-user-3-line' },
   },

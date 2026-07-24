@@ -1,0 +1,81 @@
+{
+  "navigation": {
+    "main": "Main",
+    "dashboard": "Dashboard",
+    "tracking": "Tracking",
+    "emotionLogs": "Emotion Logs",
+    "admin": "Admin",
+    "users": "Users"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "totalUsers": "Total Users",
+    "recentUsers": "Recent Users",
+    "noUsers": "No users yet.",
+    "viewAllUsers": "View all users"
+  },
+  "emotionLog": {
+    "title": "Daily Emotion Logs",
+    "logToday": "Log Today's Emotion",
+    "date": "Date",
+    "mood": "Mood",
+    "intensity": "Intensity",
+    "note": "Note",
+    "action": "Action",
+    "mild": "Mild",
+    "intense": "Intense",
+    "noteOptional": "Note (optional)",
+    "howFeeling": "How are you feeling today?",
+    "noLogs": "No emotion logs yet. Click \"Log Today's Emotion\" to start tracking!",
+    "addTitle": "Log Today's Emotion",
+    "editTitle": "Edit Emotion Log",
+    "logEmotion": "Log Emotion",
+    "save": "Save",
+    "cancel": "Cancel",
+    "deleteTitle": "Delete Emotion Log",
+    "deleteConfirm": "Are you sure you want to delete the log for {date}? This action cannot be undone.",
+    "delete": "Delete",
+    "edit": "Edit",
+    "moodOptions": {
+      "happy": "Happy",
+      "sad": "Sad",
+      "angry": "Angry",
+      "anxious": "Anxious",
+      "calm": "Calm",
+      "tired": "Tired",
+      "excited": "Excited",
+      "grateful": "Grateful",
+      "lonely": "Lonely",
+      "stressed": "Stressed"
+    }
+  },
+  "user": {
+    "title": "Users Management",
+    "addUser": "Add User",
+    "name": "Name",
+    "email": "Email",
+    "createdAt": "Created At",
+    "noUsers": "No users yet. Click \"Add User\" to create one.",
+    "addTitle": "Add User",
+    "editTitle": "Edit User",
+    "create": "Create",
+    "save": "Save",
+    "cancel": "Cancel",
+    "deleteTitle": "Delete User",
+    "deleteConfirm": "Are you sure you want to delete {name}? This action cannot be undone.",
+    "delete": "Delete"
+  },
+  "login": {
+    "title": "Standard System",
+    "email": "Email",
+    "password": "Password",
+    "login": "Login",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "············"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "close": "Close"
+  }
+}

@@ -15,7 +15,7 @@ import {
 
 export const { themeConfig, layoutConfig } = defineThemeConfig({
   app: {
-    title: 'fakduai',
+    title: 'Daily-Emotion',
 
     // ❗ if you have SVG logo and want it to adapt according to theme color, you have to apply color as `color: rgb(var(--v-global-theme-primary))`
     logo: h('div', {
@@ -26,23 +26,18 @@ export const { themeConfig, layoutConfig } = defineThemeConfig({
     contentLayoutNav: AppContentLayoutNav.Vertical,
     overlayNavFromBreakpoint: breakpointsVuetify.md + 16, // 16 for scrollbar. Docs: https://next.vuetifyjs.com/en/features/display-and-platform/
     i18n: {
-      enable: false,
-      defaultLocale: 'en',
+      enable: true,
+      defaultLocale: 'th',
       langConfig: [
+        {
+          label: 'ไทย',
+          i18nLang: 'th',
+          isRTL: false,
+        },
         {
           label: 'English',
           i18nLang: 'en',
           isRTL: false,
-        },
-        {
-          label: 'French',
-          i18nLang: 'fr',
-          isRTL: false,
-        },
-        {
-          label: 'Arabic',
-          i18nLang: 'ar',
-          isRTL: true,
         },
       ],
     },

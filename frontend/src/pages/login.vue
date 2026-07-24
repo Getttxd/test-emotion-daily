@@ -9,6 +9,8 @@ import tree3 from '@images/misc/tree3.png'
 
 import { VForm } from 'vuetify/components'
 
+const { t } = useI18n()
+
 definePage({
   meta: {
     layout: 'blank',
@@ -46,7 +48,7 @@ async function onClickLogin() {
           </h1>
         </div>
         <p class="mb-0 text-center">
-          Standard System
+          {{ t('login.title') }}
         </p>
       </VCardText>
 
@@ -57,18 +59,18 @@ async function onClickLogin() {
               <VTextField
                 v-model="email"
                 autofocus
-                label="Email"
+                :label="t('login.email')"
                 type="email"
                 :rules="[requiredValidator, emailValidator]"
-                placeholder="your@email.com"
+                :placeholder="t('login.emailPlaceholder')"
               />
             </VCol>
 
             <VCol cols="12">
               <VTextField
                 v-model="password"
-                label="Password"
-                placeholder="············"
+                :label="t('login.password')"
+                :placeholder="t('login.passwordPlaceholder')"
                 :rules="[requiredValidator]"
                 :type="isPasswordVisible ? 'text' : 'password'"
                 :append-inner-icon="isPasswordVisible ? 'ri-eye-off-line' : 'ri-eye-line'"
@@ -78,7 +80,7 @@ async function onClickLogin() {
               <div class="d-flex align-center flex-wrap justify-space-between my-5 gap-4" />
 
               <VBtn block type="submit" :loading="isProcessing">
-                Login
+                {{ t('login.login') }}
               </VBtn>
             </VCol>
           </VRow>

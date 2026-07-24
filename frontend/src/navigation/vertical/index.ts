@@ -1,25 +1,25 @@
 export default [
   {
-    heading: 'Main',
+    heading: 'navigation.main',
   },
   {
-    title: 'Dashboard',
+    title: 'navigation.dashboard',
     to: { name: 'root' },
     icon: { icon: 'ri-home-line' },
   },
   {
-    heading: 'Tracking',
+    heading: 'navigation.tracking',
   },
   {
-    title: 'Emotion Logs',
+    title: 'navigation.emotionLogs',
     to: { name: 'emotion-log-page' },
     icon: { icon: 'ri-emotion-line' },
   },
   {
-    heading: 'Admin',
+    heading: 'navigation.admin',
   },
   {
-    title: 'Users',
+    title: 'navigation.users',
     to: { name: 'user-page' },
     icon: { icon: 'ri-user-3-line' },
   },

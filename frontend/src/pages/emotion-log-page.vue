@@ -2,6 +2,14 @@
 import { useEmotionLogStore } from '@/stores/use-emotion-log-store'
 import { MOODS } from '@/models/emotion-log'
 import type { CreateEmotionLogBody, EmotionLog, Mood, UpdateEmotionLogBody } from '@/models'
+import { useSEO } from '@/composables/useSEO'
+
+useSEO({
+  title: 'Daily-Emotion - Emotion Logs',
+  description: 'บันทึกอารมณ์ประจำวัน',
+})
+
+const { t } = useI18n()
 
 const emotionLogStore = useEmotionLogStore()
 const { logs, isLoading, error } = storeToRefs(emotionLogStore)
@@ -32,13 +40,13 @@ const moodIcons: Record<string, string> = {
   stressed: 'ri-emotion-angry-line',
 }
 
-const headers = [
-  { title: 'Date', key: 'date' },
-  { title: 'Mood', key: 'mood' },
-  { title: 'Intensity', key: 'intensity' },
-  { title: 'Note', key: 'note' },
-  { title: 'Action', key: 'action', sortable: false, align: 'end' as const },
-]
+const headers = computed(() => [
+  { title: t('emotionLog.date'), key: 'date' },
+  { title: t('emotionLog.mood'), key: 'mood' },
+  { title: t('emotionLog.intensity'), key: 'intensity' },
+  { title: t('emotionLog.note'), key: 'note' },
+  { title: t('emotionLog.action'), key: 'action', sortable: false, align: 'end' as const },
+])
 
 // Dialog state
 const dialog = ref(false)
@@ -101,7 +109,7 @@ function formatDate(iso: string) {
 }
 
 function moodLabel(mood: string) {
-  return mood.charAt(0).toUpperCase() + mood.slice(1)
+  return t(`emotionLog.moodOptions.${mood}`)
 }
 
 onMounted(() => emotionLogStore.fetchLogs())
@@ -111,13 +119,13 @@ onMounted(() => emotionLogStore.fetchLogs())
   <div>
     <VCard>
       <VCardTitle class="d-flex align-center justify-space-between pa-4">
-        <span class="text-h6">Daily Emotion Logs</span>
+        <span class="text-h6">{{ t('emotionLog.title') }}</span>
         <VBtn
           color="primary"
           prepend-icon="ri-add-line"
           @click="openCreate"
         >
-          Log Today's Emotion
+          {{ t('emotionLog.logToday') }}
         </VBtn>
       </VCardTitle>
 
@@ -174,11 +182,11 @@ onMounted(() => emotionLogStore.fetchLogs())
 
         <template #item.action="{ item }">
           <IconBtn @click="openEdit(item)">
-            <VTooltip activator="parent" location="top">Edit</VTooltip>
+            <VTooltip activator="parent" location="top">{{ t('emotionLog.edit') }}</VTooltip>
             <VIcon icon="ri-pencil-line" />
           </IconBtn>
           <IconBtn color="error" @click="openDelete(item)">
-            <VTooltip activator="parent" location="top">Delete</VTooltip>
+            <VTooltip activator="parent" location="top">{{ t('emotionLog.delete') }}</VTooltip>
             <VIcon icon="ri-delete-bin-line" />
           </IconBtn>
         </template>
@@ -186,7 +194,7 @@ onMounted(() => emotionLogStore.fetchLogs())
         <template #no-data>
           <div class="text-center py-8 text-disabled">
             <VIcon icon="ri-emotion-line" size="48" class="mb-2" />
-            <div>No emotion logs yet. Click "Log Today's Emotion" to start tracking!</div>
+            <div>{{ t('emotionLog.noLogs') }}</div>
           </div>
         </template>
       </VDataTable>
@@ -194,13 +202,13 @@ onMounted(() => emotionLogStore.fetchLogs())
 
     <!-- Create / Edit Dialog -->
     <VDialog v-model="dialog" max-width="520" persistent>
-      <VCard :title="editingLog ? 'Edit Emotion Log' : 'Log Today\'s Emotion'">
+      <VCard :title="editingLog ? t('emotionLog.editTitle') : t('emotionLog.addTitle')">
         <VCardText>
           <VForm @submit.prevent="submit">
             <!-- Date -->
             <VTextField
               v-model="form.date"
-              label="Date"
+              :label="t('emotionLog.date')"
               type="date"
               prepend-inner-icon="ri-calendar-line"
               class="mb-4"
@@ -210,7 +218,7 @@ onMounted(() => emotionLogStore.fetchLogs())
             <!-- Mood Select -->
             <VSelect
               v-model="form.mood"
-              label="Mood"
+              :label="t('emotionLog.mood')"
               :items="MOODS"
               prepend-inner-icon="ri-emotion-line"
               class="mb-4"
@@ -224,13 +232,13 @@ onMounted(() => emotionLogStore.fetchLogs())
                 />
               </template>
               <template #selection="{ item }">
-                <span class="text-capitalize">{{ moodLabel(item.value as string) }}</span>
+                {{ moodLabel(item.value as string) }}
               </template>
             </VSelect>
 
             <!-- Intensity Slider -->
             <div class="mb-4">
-              <label class="text-body-2 mb-1 d-block">Intensity: {{ form.intensity }}/10</label>
+              <label class="text-body-2 mb-1 d-block">{{ t('emotionLog.intensity') }}: {{ form.intensity }}/10</label>
               <VSlider
                 v-model="form.intensity"
                 :min="1"
@@ -243,30 +251,30 @@ onMounted(() => emotionLogStore.fetchLogs())
                 thumb-label
               />
               <div class="d-flex justify-space-between text-caption text-medium-emphasis mt-n2">
-                <span>Mild</span>
-                <span>Intense</span>
+                <span>{{ t('emotionLog.mild') }}</span>
+                <span>{{ t('emotionLog.intense') }}</span>
               </div>
             </div>
 
             <!-- Note -->
             <VTextarea
               v-model="form.note"
-              label="Note (optional)"
+              :label="t('emotionLog.noteOptional')"
               prepend-inner-icon="ri-file-text-line"
-              placeholder="How are you feeling today?"
+              :placeholder="t('emotionLog.howFeeling')"
               auto-grow
               rows="3"
             />
           </VForm>
         </VCardText>
         <VCardActions class="justify-end pa-4">
-          <VBtn variant="text" @click="dialog = false">Cancel</VBtn>
+          <VBtn variant="text" @click="dialog = false">{{ t('emotionLog.cancel') }}</VBtn>
           <VBtn
             color="primary"
             :loading="isSubmitting"
             @click="submit"
           >
-            {{ editingLog ? 'Save' : 'Log Emotion' }}
+            {{ editingLog ? t('emotionLog.save') : t('emotionLog.logEmotion') }}
           </VBtn>
         </VCardActions>
       </VCard>
@@ -274,18 +282,18 @@ onMounted(() => emotionLogStore.fetchLogs())
 
     <!-- Delete Dialog -->
     <VDialog v-model="deleteDialog" max-width="400">
-      <VCard title="Delete Emotion Log">
+      <VCard :title="t('emotionLog.deleteTitle')">
         <VCardText>
-          Are you sure you want to delete the log for <strong>{{ deletingLog?.date }}</strong>? This action cannot be undone.
+          {{ t('emotionLog.deleteConfirm', { date: deletingLog?.date }) }}
         </VCardText>
         <VCardActions class="justify-end pa-4">
-          <VBtn variant="text" @click="deleteDialog = false">Cancel</VBtn>
+          <VBtn variant="text" @click="deleteDialog = false">{{ t('emotionLog.cancel') }}</VBtn>
           <VBtn
             color="error"
             :loading="isSubmitting"
             @click="confirmDelete"
           >
-            Delete
+            {{ t('emotionLog.delete') }}
           </VBtn>
         </VCardActions>
       </VCard>
