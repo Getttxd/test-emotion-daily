@@ -9,10 +9,16 @@
   },
   "dashboard": {
     "title": "แดชบอร์ด",
-    "totalUsers": "ผู้ใช้งานทั้งหมด",
-    "recentUsers": "ผู้ใช้งานล่าสุด",
-    "noUsers": "ยังไม่มีผู้ใช้งาน",
-    "viewAllUsers": "ดูผู้ใช้งานทั้งหมด"
+    "totalLogs": "บันทึกอารมณ์ทั้งหมด",
+    "todayMood": "อารมณ์วันนี้",
+    "noTodayMood": "ยังไม่ได้บันทึกวันนี้",
+    "avgIntensity": "ความรุนแรงเฉลี่ย",
+    "streak": "ต่อเนื่อง",
+    "days": "วัน",
+    "moodDistribution": "สัดส่วนอารมณ์",
+    "recentEmotions": "อารมณ์ล่าสุด",
+    "viewAllEmotions": "ดูทั้งหมด",
+    "noEmotions": "ยังไม่มีบันทึกอารมณ์"
   },
   "emotionLog": {
     "title": "บันทึกอารมณ์ประจำวัน",

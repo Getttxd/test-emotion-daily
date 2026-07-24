@@ -9,10 +9,16 @@
   },
   "dashboard": {
     "title": "Dashboard",
-    "totalUsers": "Total Users",
-    "recentUsers": "Recent Users",
-    "noUsers": "No users yet.",
-    "viewAllUsers": "View all users"
+    "totalLogs": "Total Emotion Logs",
+    "todayMood": "Today's Mood",
+    "noTodayMood": "Not logged today",
+    "avgIntensity": "Avg Intensity",
+    "streak": "Streak",
+    "days": "days",
+    "moodDistribution": "Mood Distribution",
+    "recentEmotions": "Recent Emotions",
+    "viewAllEmotions": "View all",
+    "noEmotions": "No emotion logs yet"
   },
   "emotionLog": {
     "title": "Daily Emotion Logs",
